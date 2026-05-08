@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>DRYROAST 🔥</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#1a1a1a;--bg2:#222;--bg3:#2a2a2a;
+  --glass:rgba(255,255,255,0.03);--gb:rgba(255,255,255,0.07);
+  --acc:#9ACD32;--adim:rgba(154,205,50,0.13);--aglow:rgba(154,205,50,0.22);
+  --txt:#e6e6e6;--mut:#777;--mut2:#444;
+  --sout:5px 5px 14px #111,-3px -3px 9px #2e2e2e;
+  --sin:inset 4px 4px 10px #111,inset -3px -3px 7px #2e2e2e;
+}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--bg);color:var(--txt);font-family:'Plus Jakarta Sans',sans-serif;position:fixed;width:100%;}
+.blob{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;animation:bf 14s ease-in-out infinite;}
+.b1{width:300px;height:300px;background:rgba(154,205,50,0.05);top:-80px;left:-60px;}
+.b2{width:220px;height:220px;background:rgba(154,205,50,0.04);bottom:-50px;right:-50px;animation-delay:6s;}
+@keyframes bf{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(12px,-16px) scale(1.04);}}
+.page{position:fixed;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding:16px;transition:opacity .4s ease,transform .4s cubic-bezier(.4,0,.2,1);}
+.page.hidden{opacity:0;pointer-events:none;transform:translateY(20px);}
+
+/* PAGE 1 */
+#p1{overflow-y:auto;align-items:flex-start;padding:32px 16px;}
+.card{position:relative;z-index:1;width:100%;max-width:420px;margin:auto;background:var(--glass);border:1px solid var(--gb);backdrop-filter:blur(24px);border-radius:24px;padding:36px 28px 32px;box-shadow:10px 10px 28px #0e0e0e,-4px -4px 14px #2a2a2a;}
+.logo-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.logo-ic{width:44px;height:44px;border-radius:13px;background:var(--bg2);box-shadow:var(--sout);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.logo-tx{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.6rem;letter-spacing:.06em;color:var(--acc);}
+.tag{font-size:.73rem;color:var(--mut);margin-bottom:28px;}
+.divdr{height:1px;background:linear-gradient(90deg,transparent,var(--gb),transparent);margin-bottom:24px;}
+.fields{display:flex;flex-direction:column;gap:18px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field label{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.13em;color:var(--mut);}
+.field input,.field select{background:var(--bg2);box-shadow:var(--sin);border:1px solid transparent;color:var(--txt);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:500;padding:12px 14px;border-radius:11px;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none;width:100%;}
+.field input:focus,.field select:focus{border-color:rgba(154,205,50,.45);box-shadow:var(--sin),0 0 0 3px rgba(154,205,50,.09);}
+.field input::placeholder{color:var(--mut2);}
+.field select option{background:#222;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.err{font-size:.67rem;color:#ff6b6b;display:none;margin-top:4px;}
+.err.show{display:block;}
+.sbtn{width:100%;margin-top:8px;padding:14px;border:none;border-radius:13px;background:var(--acc);color:#111;font-family:'Clash Display',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.08em;cursor:pointer;box-shadow:4px 4px 14px rgba(0,0,0,.4),0 0 22px var(--aglow),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .15s,background .15s;}
+.sbtn:hover{background:#aede3a;transform:translateY(-1px);}
+.sbtn:active{transform:translateY(1px);}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-6px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+.shake{animation:shake .4s ease;}
+
+/* PAGE 2 */
+#p2{padding:0;align-items:stretch;justify-content:center;}
+.chat-app{position:relative;z-index:1;width:100%;max-width:700px;height:100%;display:flex;flex-direction:column;overflow:hidden;}
+.hdr{flex-shrink:0;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--gb);background:rgba(26,26,26,.93);backdrop-filter:blur(16px);}
+.bk{flex-shrink:0;width:32px;height:32px;border-radius:10px;background:var(--bg2);box-shadow:var(--sout);border:1px solid var(--gb);color:var(--mut);font-size:.95rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:color .2s;}
+.bk:hover{color:var(--acc);}
+.hdr-logo{display:flex;align-items:center;gap:7px;flex:1;min-width:0;overflow:hidden;}
+.hdr-ic{width:30px;height:30px;border-radius:9px;background:var(--bg2);box-shadow:var(--sout);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.hdr-tx{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.05em;color:var(--acc);white-space:nowrap;}
+.hdr-r{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.chip{display:flex;align-items:center;gap:5px;background:var(--glass);border:1px solid var(--gb);padding:4px 8px 4px 4px;border-radius:20px;}
+.chip-av{width:22px;height:22px;border-radius:7px;background:var(--adim);border:1px solid rgba(154,205,50,.2);display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:var(--acc);flex-shrink:0;}
+.chip-nm{font-size:.68rem;font-weight:600;color:var(--txt);max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.live{display:flex;align-items:center;gap:4px;background:var(--glass);border:1px solid var(--gb);padding:4px 8px;border-radius:20px;font-size:.58rem;letter-spacing:.06em;color:var(--acc);text-transform:uppercase;font-weight:600;flex-shrink:0;}
+.dot{width:5px;height:5px;background:var(--acc);border-radius:50%;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 5px var(--acc);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
+.ctrl{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--gb);background:rgba(26,26,26,.7);}
+.sw{position:relative;}
+.sw::after{content:'▾';position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:.55rem;color:var(--mut);pointer-events:none;}
+.csel{background:var(--bg2);box-shadow:var(--sin);border:1px solid transparent;color:var(--txt);font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:500;padding:6px 24px 6px 10px;border-radius:8px;outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;}
+.csel option{background:#222;}
+.tbar{display:flex;align-items:center;gap:6px;flex:1;}
+.tlbl{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);white-space:nowrap;}
+.ttrack{flex:1;height:3px;background:var(--bg3);border-radius:3px;overflow:hidden;}
+.tfill{height:100%;border-radius:3px;transition:width .5s cubic-bezier(.34,1.56,.64,1),background .4s;}
+.tfill.mild{width:25%;background:linear-gradient(90deg,#9ACD32,#c5e870);}
+.tfill.classic{width:55%;background:linear-gradient(90deg,#7aaa22,#9ACD32);}
+.tfill.savage{width:90%;background:linear-gradient(90deg,#4d7a0a,#9ACD32);}
+.tval{font-size:.6rem;font-weight:700;color:var(--acc);white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;}
+#chat{flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:12px;padding:14px 14px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;}
+#chat::-webkit-scrollbar{width:3px;}
+#chat::-webkit-scrollbar-thumb{background:var(--mut2);border-radius:3px;}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:30px;text-align:center;}
+.empty-ic{width:56px;height:56px;border-radius:16px;background:var(--bg2);box-shadow:var(--sout);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:4px;}
+.empty-big{font-family:'Clash Display',sans-serif;font-size:1.15rem;font-weight:600;color:var(--mut);}
+.empty-sub{font-size:.68rem;color:var(--mut2);line-height:1.6;}
+.msg{display:flex;flex-direction:column;gap:3px;animation:mi .32s cubic-bezier(.34,1.2,.64,1);}
+@keyframes mi{from{opacity:0;transform:translateY(10px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+.msg.u{align-items:flex-end;}
+.msg.b{align-items:flex-start;}
+.mmeta{display:flex;align-items:center;gap:5px;padding:0 4px;}
+.mav{width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;}
+.msg.u .mav{background:var(--adim);border:1px solid rgba(154,205,50,.2);color:var(--acc);order:2;}
+.msg.b .mav{background:#2a2a2a;border:1px solid #333;color:#888;}
+.mnm{font-size:.58rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;}
+.msg.u .mnm{color:var(--acc);order:1;}
+.msg.b .mnm{color:var(--mut);}
+.bub{max-width:82%;padding:10px 14px;font-size:.84rem;line-height:1.65;white-space:pre-wrap;word-break:break-word;}
+.msg.u .bub{background:var(--bg2);box-shadow:var(--sout);border-radius:13px 3px 13px 13px;color:#d5d5d5;border:1px solid #333;}
+.msg.b .bub{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-left:2px solid var(--acc);border-radius:3px 13px 13px 13px;color:var(--txt);box-shadow:5px 5px 16px rgba(0,0,0,.4);}
+.twrap{display:flex;flex-direction:column;align-items:flex-start;gap:3px;animation:mi .3s ease;}
+.tbub{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--gb);border-left:2px solid var(--acc);border-radius:3px 13px 13px 13px;padding:12px 16px;display:flex;gap:5px;align-items:center;}
+.td{width:5px;height:5px;border-radius:50%;animation:tda 1.2s infinite;}
+.td:nth-child(1){background:var(--acc);animation-delay:0s;}
+.td:nth-child(2){background:#7aaa22;animation-delay:.2s;}
+.td:nth-child(3){background:#5a8010;animation-delay:.4s;}
+@keyframes tda{0%,60%,100%{transform:translateY(0);opacity:.3;}30%{transform:translateY(-5px);opacity:1;}}
+.inp-sec{flex-shrink:0;padding:8px 12px 12px;border-top:1px solid var(--gb);background:rgba(26,26,26,.96);backdrop-filter:blur(20px);}
+.inp-card{background:var(--bg2);box-shadow:var(--sin);border:1px solid var(--gb);border-radius:16px;padding:10px 12px;display:flex;align-items:flex-end;gap:10px;transition:border-color .25s,box-shadow .25s;}
+.inp-card:focus-within{border-color:rgba(154,205,50,.35);box-shadow:var(--sin),0 0 0 3px rgba(154,205,50,.07);}
+#ui{flex:1;background:transparent;border:none;outline:none;color:var(--txt);font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:400;line-height:1.5;resize:none;min-height:22px;max-height:100px;overflow-y:auto;padding:0;}
+#ui::placeholder{color:var(--mut2);}
+#sb{width:38px;height:38px;border-radius:11px;background:var(--acc);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:3px 3px 10px rgba(0,0,0,.35),0 0 16px var(--aglow);transition:transform .15s,background .15s,opacity .15s;}
+#sb:hover{background:#aede3a;transform:scale(1.06);}
+#sb:active{transform:scale(.94);}
+#sb:disabled{background:var(--bg3);box-shadow:none;cursor:not-allowed;transform:none;opacity:.4;}
+#sb svg{width:16px;height:16px;}
+.hint{text-align:center;font-size:.56rem;color:var(--mut2);letter-spacing:.04em;margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+
+<!-- PAGE 1 -->
+<div class="page" id="p1">
+  <div class="card">
+    <div class="logo-row">
+      <div class="logo-ic">🔥</div>
+      <span class="logo-tx">DRYROAST</span>
+    </div>
+    <p class="tag">calm. observant. always roasting.</p>
+    <div class="divdr"></div>
+    <div class="fields">
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="uname" autocomplete="off" spellcheck="false"/>
+        <span class="err" id="nerr">Enter your name to continue</span>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>Language</label>
+          <select id="slang">
+            <option value="English">English</option>
+            <option value="Tanglish">Tanglish</option>
+            <option value="Auto">Auto</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Roast Level</label>
+          <select id="stone">
+            <option value="Classic">Classic</option>
+            <option value="Mild">Mild</option>
+            <option value="Savage-lite">Savage-lite</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Memory / Traits <span style="color:#444;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <input type="text" id="smem" placeholder="overthinks, night owl, always late…" autocomplete="off"/>
+      </div>
+      <button class="sbtn" onclick="goChat()">Start Roasting →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page hidden" id="p2">
+  <div class="chat-app">
+    <div class="hdr">
+      <button class="bk" onclick="goBack()">&#8592;</button>
+      <div class="hdr-logo">
+        <div class="hdr-ic">🔥</div>
+        <span class="hdr-tx">DRYROAST</span>
+      </div>
+      <div class="hdr-r">
+        <div class="chip">
+          <div class="chip-av" id="cav">?</div>
+          <span class="chip-nm" id="cnm">—</span>
+        </div>
+        <div class="live"><span class="dot"></span>Live</div>
+      </div>
+    </div>
+    <div class="ctrl">
+      <div class="sw">
+        <select class="csel" id="tone" onchange="syncBar()">
+          <option value="Classic">Classic</option>
+          <option value="Mild">Mild</option>
+          <option value="Savage-lite">Savage-lite</option>
+        </select>
+      </div>
+      <div class="sw">
+        <select class="csel" id="lang">
+          <option value="English">English</option>
+          <option value="Tanglish">Tanglish</option>
+          <option value="Auto">Auto</option>
+        </select>
+      </div>
+      <div class="tbar">
+        <span class="tlbl">Intensity</span>
+        <div class="ttrack"><div class="tfill classic" id="tf"></div></div>
+        <span class="tval" id="tv">Classic</span>
+      </div>
+    </div>
+    <div id="chat">
+      <div class="empty" id="es">
+        <div class="empty-ic">💬</div>
+        <div class="empty-big">Say something.</div>
+        <div class="empty-sub">Every reply comes with<br>a complimentary roast.</div>
+      </div>
+    </div>
+    <div class="inp-sec">
+      <div class="inp-card">
+        <textarea id="ui" placeholder="say something…" rows="1"></textarea>
+        <button id="sb">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+      <div class="hint">Enter to send · Shift+Enter for new line</div>
+    </div>
+  </div>
+</div>
+
+<script>
+let hist = [];
+let busy = false;
+let cfg  = {};
+
+function goChat() {
+  const name = document.getElementById('uname').value.trim();
+  if (!name) {
+    document.getElementById('nerr').classList.add('show');
+    document.querySelector('.card').classList.add('shake');
+    setTimeout(() => document.querySelector('.card').classList.remove('shake'), 500);
+    return;
+  }
+  cfg = {
+    name,
+    lang: document.getElementById('slang').value,
+    tone: document.getElementById('stone').value,
+    mem:  document.getElementById('smem').value.trim()
+  };
+  document.getElementById('lang').value = cfg.lang;
+  document.getElementById('tone').value = cfg.tone;
+  document.getElementById('cav').textContent = name[0].toUpperCase();
+  document.getElementById('cnm').textContent = name;
+  syncBar();
+  hist = []; busy = false;
+  resetChat();
+  document.getElementById('p1').classList.add('hidden');
+  document.getElementById('p2').classList.remove('hidden');
+  setTimeout(() => document.getElementById('ui').focus(), 300);
+}
+
+function goBack() {
+  document.getElementById('p2').classList.add('hidden');
+  document.getElementById('p1').classList.remove('hidden');
+  busy = false;
+  document.getElementById('sb').disabled = false;
+}
+
+function resetChat() {
+  document.getElementById('chat').innerHTML = `
+    <div class="empty" id="es">
+      <div class="empty-ic">💬</div>
+      <div class="empty-big">Say something.</div>
+      <div class="empty-sub">Every reply comes with<br>a complimentary roast.</div>
+    </div>`;
+}
+
+document.getElementById('uname').addEventListener('keydown', e => { if(e.key==='Enter'){e.preventDefault();goChat();} });
+document.getElementById('uname').addEventListener('input', () => document.getElementById('nerr').classList.remove('show'));
+
+function syncBar() {
+  const t = document.getElementById('tone').value;
+  const f = document.getElementById('tf');
+  const v = document.getElementById('tv');
+  f.className = 'tfill';
+  if (t==='Mild')           { f.classList.add('mild');    v.textContent='Mild'; }
+  else if(t==='Savage-lite'){ f.classList.add('savage');  v.textContent='Savage-lite'; }
+  else                      { f.classList.add('classic'); v.textContent='Classic'; }
+}
+
+function sysPrompt() {
+  const tone = document.getElementById('tone').value;
+  const lang = document.getElementById('lang').value;
+
+  // Language instruction — very explicit to prevent Chinese/other languages
+  let langRule = '';
+  if (lang === 'English') {
+    langRule = `LANGUAGE: You MUST reply in ENGLISH ONLY. No other language. No Tamil. No Chinese. No Hindi. Only English.`;
+  } else if (lang === 'Tanglish') {
+    langRule = `LANGUAGE: You MUST reply in TANGLISH — a natural mix of Tamil words written in English letters + English. Example style: "dei machan, yenna da solra, theriyuma, po da, illa da". Do NOT use Tamil script. Do NOT use Chinese. Mix Tamil words naturally into English sentences.`;
+  } else {
+    langRule = `LANGUAGE: Detect the language from the user's message and reply in the SAME language. If they write in English, reply in English. If they mix Tamil+English (Tanglish), reply in Tanglish. NEVER reply in Chinese or any other language.`;
+  }
+
+  // Tone instruction
+  let toneRule = '';
+  if (tone === 'Mild') {
+    toneRule = `ROAST LEVEL — MILD: Be friendly and warm. Add only a tiny, light tease. Like a supportive friend who occasionally makes a small joke.`;
+  } else if (tone === 'Savage-lite') {
+    toneRule = `ROAST LEVEL — SAVAGE-LITE: Be sharp, confident and cutting. The roast should genuinely sting a little. Be bold and direct. Still respectful but no mercy. Hit them where it's accurate.`;
+  } else {
+    toneRule = `ROAST LEVEL — CLASSIC: Balanced dry humor. Sharp observations. The roast is clear but controlled — witty, not harsh.`;
+  }
+
+  return `You are DRYROAST — a sharp, witty, observant friend who texts casually. You are NOT an AI. Behave like a real person chatting.
+
+${langRule}
+
+${toneRule}
+
+CORE RULES:
+1. ALWAYS reply directly about what the user JUST said. Read their message carefully.
+2. EVERY reply MUST include a roast — no exceptions, even for "hi", "ok", "hmm".
+3. The roast must be woven naturally into the reply — not a separate sentence.
+4. Keep replies SHORT — max 2 lines. Real texting style.
+5. NEVER use bullet points, lists, headers, or labels.
+6. NEVER say "As an AI" or any robotic phrases.
+7. NEVER repeat the same roast twice in a conversation.
+
+ROAST RULES:
+- Base the roast on exactly what they said — their topic, effort, timing, or phrasing
+- Short lazy message ("ok", "hi", "hmm") → roast their low effort specifically
+- Question → answer it properly + roast the question or their situation
+- Problem → help them + roast why they got into that mess
+- Every roast must feel personal and earned, not random or generic
+
+MEMORY:
+Known traits about ${cfg.name}: ${cfg.mem || 'none provided'}
+Use these naturally in roasts. Never announce them.
+
+STRICT NO's:
+- No bad words
+- No sensitive topics (family, health, appearance, religion)
+- No Chinese, no random language switching
+- No emojis unless user uses them
+
+User's name: ${cfg.name}
+
+Output the reply only. Nothing else.`;
+}
+
+function addMsg(role, text) {
+  const es = document.getElementById('es');
+  if (es) es.style.display = 'none';
+  const chat = document.getElementById('chat');
+  const w = document.createElement('div'); w.className=`msg ${role==='user'?'u':'b'}`;
+  const m = document.createElement('div'); m.className='mmeta';
+  const a = document.createElement('div'); a.className='mav';
+  a.textContent = role==='user' ? cfg.name[0].toUpperCase() : 'DR';
+  const n = document.createElement('div'); n.className='mnm';
+  n.textContent = role==='user' ? cfg.name : 'dryroast';
+  m.appendChild(a); m.appendChild(n);
+  const b = document.createElement('div'); b.className='bub';
+  w.appendChild(m); w.appendChild(b);
+  chat.appendChild(w);
+  chat.scrollTop = chat.scrollHeight;
+  if (role==='bot') {
+    let i=0;
+    (function t(){ if(i<text.length){ b.textContent+=text[i++]; chat.scrollTop=chat.scrollHeight; setTimeout(t,14); } })();
+  } else { b.textContent=text; }
+}
+
+function showTyping() {
+  const es = document.getElementById('es');
+  if (es) es.style.display='none';
+  const chat = document.getElementById('chat');
+  const w=document.createElement('div'); w.className='twrap'; w.id='typing';
+  const m=document.createElement('div'); m.className='mmeta';
+  const a=document.createElement('div'); a.className='mav'; a.textContent='DR';
+  const n=document.createElement('div'); n.className='mnm'; n.textContent='dryroast';
+  m.appendChild(a); m.appendChild(n);
+  const b=document.createElement('div'); b.className='tbub';
+  b.innerHTML='<div class="td"></div><div class="td"></div><div class="td"></div>';
+  w.appendChild(m); w.appendChild(b);
+  chat.appendChild(w); chat.scrollTop=chat.scrollHeight;
+  return w;
+}
+
+async function send() {
+  if (busy) return;
+  const inp=document.getElementById('ui');
+  const btn=document.getElementById('sb');
+  const txt=inp.value.trim();
+  if (!txt) return;
+
+  busy=true; btn.disabled=true;
+  inp.value=''; inp.style.height='auto';
+  addMsg('user', txt);
+  hist.push({role:'user', content:txt});
+  const typ=showTyping();
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: hist, system: sysPrompt() })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    const reply = data.reply || '…';
+    hist.push({role:'assistant', content:reply});
+    typ.remove();
+    addMsg('bot', reply);
+  } catch(e) {
+    typ.remove();
+    const errMsg = `couldn't connect da — ${e.message}`;
+    addMsg('bot', errMsg);
+    hist.pop();
+  }
+
+  busy=false; btn.disabled=false;
+  document.getElementById('ui').focus();
+}
+
+document.getElementById('sb').addEventListener('click', send);
+document.getElementById('ui').addEventListener('keydown', e => {
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}
+});
+document.getElementById('ui').addEventListener('input', function(){
+  this.style.height='auto';
+  this.style.height=Math.min(this.scrollHeight,100)+'px';
+});
+</script>
+</body>
+</html>
